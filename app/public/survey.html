@@ -142,25 +142,18 @@
     </select>
     <br>
     <br>
-
-    <!-- Submit -->
     <button type="submit" class="btn btn-primary btn-lg btn-block" id="submit"><i class="fa fa-check-circle" aria-hidden="true"></i>
      Submit</button>
-
     <hr>
     <footer class="footer">
       <div class="container">
-        <p><a href="/api/friends">API Friends List</a> | <a href=>GitHub Repo</a></p>
+      <p><a href="/api/friends">API Friends List</a> | <a href="https://github.com/tcough99/friend-finder-app">GitHub Repo</a></p>
       </div>
     </footer>
-
   </div>
 
-  <!-- Modal -->
   <div id="results-modal" class="modal fade" role="dialog">
     <div class="modal-dialog">
-
-      <!-- Modal content-->
       <div class="modal-content">
         <div class="modal-header">
           <button class="close" data-dismiss="modal">&times;</button>
@@ -179,7 +172,6 @@
   </div>
 
   <script type="text/javascript">
-    // CSS
     var config = {
       ".chosen-select": {},
       ".chosen-select-deselect": {
@@ -221,10 +213,10 @@
         });
         return isValid;
       }
+     //User data from the form
 
-      // If all required fields are filled
       if (validateForm()) {
-        // Create an object for the user"s data
+    
         var userData = {
           name: $("#name").val(),
           photo: $("#photo").val(),
@@ -241,15 +233,14 @@
             $("#q10").val()
           ]
         };
-
-        // AJAX post the data to the friends API.
+        // AJAX post the data to the friends API
         $.post("/api/friends", userData, function(data) {
 
-          // Grab the result from the AJAX post so that the best match's name and photo are displayed.
+          // Best matching friend
           $("#match-name").text(data.name);
           $("#match-img").attr("src", data.photo);
 
-          // Show the modal with the best match
+          // Show best match mod
           $("#results-modal").modal("toggle");
 
         });
